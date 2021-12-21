@@ -3,6 +3,7 @@
 #include "../../Sorts.h"
 #include "../../Menu.h"
 #include "../../Complex.h"
+#include "../../Function.h"
 
 using namespace Sorts_algorithms;
 
@@ -184,7 +185,7 @@ TEST(Sorts, ArraySelectionSort)
     Sequence<int>* seq;
     auto seq_help = new ArraySequence<int>(array_3, 5);
     seq = seq_help;
-    seq = SelectionSort(seq);
+    seq = SelectionSort(seq, compareT);
     ASSERT_EQ(-999, seq->Get(0));
     ASSERT_EQ(4, seq->Get(1));
     ASSERT_EQ(5, seq->Get(2));
@@ -198,7 +199,7 @@ TEST(Sorts, ArraytQuickSort)
     Sequence<int>* seq;
     auto seq_help = new ArraySequence<int>(array_3, 5);
     seq = seq_help;
-    seq = QuickSort(seq);
+    seq = QuickSort(seq, compareT);
     ASSERT_EQ(-999, seq->Get(0));
     ASSERT_EQ(4, seq->Get(1));
     ASSERT_EQ(5, seq->Get(2));
@@ -212,7 +213,7 @@ TEST(Sorts, ArrayShellSort)
     Sequence<int>* seq;
     auto seq_help = new ArraySequence<int>(array_3, 5);
     seq = seq_help;
-    seq = ShellSort(seq);
+    seq = ShellSort(seq, compareT);
     ASSERT_EQ(-999, seq->Get(0));
     ASSERT_EQ(4, seq->Get(1));
     ASSERT_EQ(5, seq->Get(2));
@@ -226,7 +227,7 @@ TEST(Sorts, DoubleArraySelectionSort)
     Sequence<double>* seq;
     auto seq_help = new ArraySequence<double>(array_4, 7);
     seq = seq_help;
-    seq = SelectionSort(seq);
+    seq = SelectionSort(seq, compareT);
     EXPECT_FLOAT_EQ(-76.5, seq->Get(0));
     EXPECT_FLOAT_EQ(1.111, seq->Get(1));
     EXPECT_FLOAT_EQ(1.112, seq->Get(2));
@@ -241,7 +242,7 @@ TEST(Sorts, DoubleArrayQuickSort)
     Sequence<double>* seq;
     auto seq_help = new ArraySequence<double>(array_4, 7);
     seq = seq_help;
-    seq = QuickSort(seq);
+    seq = QuickSort(seq, compareT);
     EXPECT_FLOAT_EQ(-76.5, seq->Get(0));
     EXPECT_FLOAT_EQ(1.111, seq->Get(1));
     EXPECT_FLOAT_EQ(1.112, seq->Get(2));
@@ -257,7 +258,7 @@ TEST(Sorts, DoubleArrayShellSort)
     Sequence<double>* seq;
     auto seq_help = new ArraySequence<double>(array_4, 7);
     seq = seq_help;
-    seq = ShellSort(seq);
+    seq = ShellSort(seq, compareT);
     EXPECT_FLOAT_EQ(-76.5, seq->Get(0));
     EXPECT_FLOAT_EQ(1.111, seq->Get(1));
     EXPECT_FLOAT_EQ(1.112, seq->Get(2));
@@ -273,7 +274,7 @@ TEST(Sorts, ListSelectionSort)
     Sequence<int>* seq;
     auto seq_help = new ListSequence<int>(array_3, 5);
     seq = seq_help;
-    seq = SelectionSort(seq);
+    seq = SelectionSort(seq, compareT);
     ASSERT_EQ(-999, seq->Get(0));
     ASSERT_EQ(4, seq->Get(1));
     ASSERT_EQ(5, seq->Get(2));
@@ -287,7 +288,7 @@ TEST(Sorts, ListtQuickSort)
     Sequence<int>* seq;
     auto seq_help = new ListSequence<int>(array_3, 5);
     seq = seq_help;
-    seq = QuickSort(seq);
+    seq = QuickSort(seq, compareT);
     ASSERT_EQ(-999, seq->Get(0));
     ASSERT_EQ(4, seq->Get(1));
     ASSERT_EQ(5, seq->Get(2));
@@ -301,7 +302,7 @@ TEST(Sorts, ListShellSort)
     Sequence<int>* seq;
     auto seq_help = new ListSequence<int>(array_3, 5);
     seq = seq_help;
-    seq = ShellSort(seq);
+    seq = ShellSort(seq, compareT);
     ASSERT_EQ(-999, seq->Get(0));
     ASSERT_EQ(4, seq->Get(1));
     ASSERT_EQ(5, seq->Get(2));
@@ -315,7 +316,7 @@ TEST(Sorts, DoubleListSelectionSort)
     Sequence<double>* seq;
     auto seq_help = new ListSequence<double>(array_4, 7);
     seq = seq_help;
-    seq = SelectionSort(seq);
+    seq = SelectionSort(seq, compareT);
     EXPECT_FLOAT_EQ(-76.5, seq->Get(0));
     EXPECT_FLOAT_EQ(1.111, seq->Get(1));
     EXPECT_FLOAT_EQ(1.112, seq->Get(2));
@@ -331,7 +332,7 @@ TEST(Sorts, DoubleListQuickSort)
     Sequence<double>* seq;
     auto seq_help = new ListSequence<double>(array_4, 7);
     seq = seq_help;
-    seq = QuickSort(seq);
+    seq = QuickSort(seq, compareT);
     EXPECT_FLOAT_EQ(-76.5, seq->Get(0));
     EXPECT_FLOAT_EQ(1.111, seq->Get(1));
     EXPECT_FLOAT_EQ(1.112, seq->Get(2));
@@ -347,7 +348,7 @@ TEST(Sorts, DoubleListShellSort)
     Sequence<double>* seq;
     auto seq_help = new ListSequence<double>(array_4, 7);
     seq = seq_help;
-    seq = ShellSort(seq);
+    seq = ShellSort(seq, compareT);
     EXPECT_FLOAT_EQ(-76.5, seq->Get(0));
     EXPECT_FLOAT_EQ(1.111, seq->Get(1));
     EXPECT_FLOAT_EQ(1.112, seq->Get(2));
@@ -363,7 +364,7 @@ TEST(Sorts, ComplexSelectionSort)
     Sequence<complex>* seq;
     auto seq_help = new ArraySequence<complex>(array_5, 4);
     seq = seq_help;
-    seq = SelectionSort(seq);
+    seq = SelectionSort(seq, compareT);
     ASSERT_EQ(complex(1,1), seq->Get(0));
     ASSERT_EQ(complex(1,2), seq->Get(1));
     ASSERT_EQ(complex(2,2), seq->Get(2));
@@ -376,7 +377,7 @@ TEST(Sorts, ComplexQuickSort)
     Sequence<complex>* seq;
     auto seq_help = new ArraySequence<complex>(array_5, 4);
     seq = seq_help;
-    seq = QuickSort(seq);
+    seq = QuickSort(seq, compareT);
     ASSERT_EQ(complex(1,1), seq->Get(0));
     ASSERT_EQ(complex(1,2), seq->Get(1));
     ASSERT_EQ(complex(2,2), seq->Get(2));
@@ -389,7 +390,7 @@ TEST(Sorts, ComplexShellSort)
     Sequence<complex>* seq;
     auto seq_help = new ArraySequence<complex>(array_5, 4);
     seq = seq_help;
-    seq = ShellSort(seq);
+    seq = ShellSort(seq, compareT);
     ASSERT_EQ(complex(1,1), seq->Get(0));
     ASSERT_EQ(complex(1,2), seq->Get(1));
     ASSERT_EQ(complex(2,2), seq->Get(2));

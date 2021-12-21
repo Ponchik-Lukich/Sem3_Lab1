@@ -2,6 +2,7 @@
 #include "ListSequence.h"
 #include "Sorts.h"
 #include "random"
+#include "Function.h"
 #include <string>
 
 
@@ -109,6 +110,17 @@ void ChooseSAlg()
     cout << ("3 <- Shell Sort") << endl;
 }
 
+template<class T>
+void Print(Sequence<T> *seq)
+{
+    int size = seq->GetSize();
+    for (int i = 0; i < size; i++)
+    {
+        cout << seq->Get(i) << ' ';
+    }
+    cout << endl;
+}
+
 string TimeConv(double time)
 {
     string Tstring;
@@ -129,7 +141,7 @@ void Final(Sequence<T>* seq)
     cout << "Sorted sequence: ";
     Print(seq);
     cout << endl;
-    if (IsCorrect(seq) == true)
+    if (IsCorrect(seq, compareT) == true)
     {
         cout << "Sorted sequence is Correct!" << endl;
     }
@@ -158,20 +170,20 @@ void Run(Sequence<T>* seq)
     Sequence<int>* seq2;
     if (choice == 1)
     {
-        seq2 = SelectionSort(seq);
+        seq2 = SelectionSort(seq, compareT);
         Final(seq2);
     }
 
     if (choice == 2)
     {
-        seq2 = QuickSort(seq);
+        seq2 = QuickSort(seq, compareT);
         Print(seq);
         Final(seq2);
     }
 
     if (choice == 3)
     {
-        seq2 = ShellSort(seq);
+        seq2 = ShellSort(seq, compareT);
         Final(seq2);
     }
 
@@ -204,13 +216,13 @@ double RunCompare_help(int choice, Sequence<T>* seq)
     switch (choice)
     {
         case 1:
-            time = Time(seq, SelectionSort);
+            time = Time(seq, SelectionSort, compareT);
             break;
         case 2:
-            time = Time(seq, QuickSort);
+            time = Time(seq, QuickSort, compareT);
             break;
         case 3:
-            time = Time(seq, ShellSort);
+            time = Time(seq, ShellSort, compareT);
             break;
     }
     return time;

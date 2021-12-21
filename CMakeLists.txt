@@ -5,4 +5,4 @@ set(CMAKE_CXX_STANDARD 14)
 
 add_subdirectory("LAB-1-tests")
 
-add_executable(LAB1 Menu.cpp)
+add_executable(LAB1 Menu.cpp Function.h)
